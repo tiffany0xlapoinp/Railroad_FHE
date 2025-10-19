@@ -1,0 +1,407 @@
+/* App.css */
+:root {
+  --wood: #d2b48c;
+  --stone: #b8b8b8;
+  --grass: #8fbc8f;
+  --sea: #4682b4;
+  --dark-wood: #8b4513;
+  --light-wood: #f5deb3;
+}
+
+body {
+  margin: 0;
+  font-family: 'Courier New', monospace;
+  background-color: var(--wood);
+  color: #333;
+  image-rendering: pixelated;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Pixel theme styling */
+.pixel-theme {
+  background-color: var(--wood);
+  border: 4px solid #000;
+}
+
+.pixel-button {
+  background-color: var(--grass);
+  border: 2px solid #000;
+  padding: 8px 16px;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+  box-shadow: 4px 4px 0px #000;
+  transition: all 0.1s;
+  image-rendering: pixelated;
+}
+
+.pixel-button:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #000;
+  background-color: var(--sea);
+}
+
+.pixel-button:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0px 0px 0px #000;
+}
+
+.pixel-button.small {
+  padding: 4px 8px;
+  font-size: 0.8rem;
+}
+
+.pixel-button:disabled {
+  background-color: var(--stone);
+  cursor: not-allowed;
+}
+
+/* Header styles */
+.app-header {
+  background-color: var(--dark-wood);
+  padding: 16px;
+  border-bottom: 4px solid #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: #fff;
+  text-shadow: 2px 2px 0px #000;
+}
+
+.subtitle {
+  color: var(--light-wood);
+  font-size: 0.9rem;
+}
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Main content layout */
+.main-content {
+  display: flex;
+  flex: 1;
+  padding: 16px;
+  gap: 16px;
+}
+
+.left-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.right-panel {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.panel-section {
+  background-color: var(--light-wood);
+  border: 3px solid #000;
+  padding: 16px;
+}
+
+.panel-section h2 {
+  margin-top: 0;
+  border-bottom: 2px solid #000;
+  padding-bottom: 8px;
+}
+
+/* Rail map styling */
+.rail-map {
+  position: relative;
+  height: 300px;
+  background-color: var(--grass);
+  border: 3px solid #000;
+  overflow: hidden;
+}
+
+.city-node {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-color: var(--stone);
+  border: 3px solid #000;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.city-node.connected {
+  background-color: var(--sea);
+}
+
+.city-node.selected {
+  box-shadow: 0 0 0 4px gold;
+}
+
+.city-name {
+  font-weight: bold;
+  font-size: 0.7rem;
+  text-align: center;
+  color: #fff;
+  text-shadow: 1px 1px 0px #000;
+}
+
+.city-connections {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.connection-line {
+  position: absolute;
+  height: 2px;
+  background-color: #000;
+  width: 100px;
+  top: 50%;
+  left: 50%;
+  transform-origin: left center;
+}
+
+/* Stats container */
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.stat-item {
+  background-color: #fff;
+  border: 2px solid #000;
+  padding: 8px;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+}
+
+/* Cities list */
+.cities-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.city-card {
+  background-color: #fff;
+  border: 3px solid #000;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.city-card.selected {
+  background-color: #ffffcc;
+}
+
+.city-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.city-status {
+  padding: 2px 8px;
+  font-size: 0.8rem;
+  border: 2px solid #000;
+}
+
+.city-status.connected {
+  background-color: var(--grass);
+}
+
+.city-status.disconnected {
+  background-color: var(--stone);
+}
+
+.city-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.detail-item span {
+  font-size: 0.8rem;
+}
+
+.detail-item strong {
+  font-weight: bold;
+}
+
+.detail-item strong.positive {
+  color: green;
+}
+
+.detail-item strong.negative {
+  color: red;
+}
+
+.city-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Features section */
+.features-section {
+  background-color: #fff;
+  border: 2px solid #000;
+  padding: 12px;
+  margin-bottom: 16px;
+}
+
+.features-section h3 {
+  margin-top: 0;
+}
+
+.features-section ul {
+  padding-left: 20px;
+  margin-bottom: 0;
+}
+
+/* Transaction notice */
+.transaction-notice {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.pixel-alert {
+  background-color: #fff;
+  border: 3px solid #000;
+  padding: 8px 16px;
+  font-weight: bold;
+}
+
+.pixel-alert.success {
+  background-color: #90ee90;
+}
+
+.pixel-alert.error {
+  background-color: #ffcccb;
+}
+
+/* Footer */
+.app-footer {
+  background-color: var(--dark-wood);
+  padding: 16px;
+  border-top: 4px solid #000;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-brand p {
+  margin: 4px 0 0 0;
+  color: var(--light-wood);
+  font-size: 0.8rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 16px;
+}
+
+.footer-link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+.fhe-badge {
+  background-color: var(--sea);
+  padding: 4px 8px;
+  border: 2px solid #000;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Loading screen */
+.loading-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--wood);
+}
+
+.pixel-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #000;
+  border-top-color: var(--sea);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+  }
+  
+  .right-panel {
+    width: 100%;
+  }
+  
+  .stats-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
